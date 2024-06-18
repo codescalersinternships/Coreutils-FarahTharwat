@@ -10,6 +10,3 @@ func Env(){
 		fmt.Println(pair[0], ":", pair[1])
 	}
 }
-// func main() {
-// 	env()
-// }

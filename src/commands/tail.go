@@ -1,20 +1,29 @@
 package commands
+
 import (
 	"bufio"
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
-func Tail(num int, filepath string) {
-	file, err := os.Open(filepath)
+func Tail(num int, path string) {
+	absPath, err := filepath.Abs(path)
 	if err != nil {
+		fmt.Println("Error getting absolute path:", err)
+		return
+	}
+	path = absPath
+	file, err := os.Open(path)
+	if err != nil {
+		fmt.Println("Error:", err)
 		fmt.Println("Incorrect file path or file does not exist")
 		return
 	}
 	defer file.Close()
 	scanner := bufio.NewScanner(file)
+	LinesCount,_,_ := Wc(path)
 	counter := 0
-	LinesCount,_,_ := Wc(filepath)
 	for scanner.Scan() {
 		if ((LinesCount-counter) <= num){
 			fmt.Println(scanner.Text())
@@ -22,18 +31,3 @@ func Tail(num int, filepath string) {
 		counter++
 	}
 	}
-
-// func main() {
-// 	reader := bufio.NewReader(os.Stdin)
-// 	input, _ := reader.ReadString('\n')
-// 	//Trimming the new line character from the input
-// 	input = strings.TrimSpace(input)
-// 	// Spliting the input by spaces and appending to an array of strings (slice)
-// 	arrayOfStrings := strings.Fields(input)
-// 	num, err := strconv.Atoi(arrayOfStrings[0])
-// 	if err != nil {
-// 		fmt.Println("Error converting input to integer:", err)
-// 		return
-// 	}
-// 	tail(num,arrayOfStrings[1])
-// }

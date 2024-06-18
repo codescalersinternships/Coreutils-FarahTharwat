@@ -24,14 +24,8 @@ func Wc(filepath string) (int, int, int) {
 		words := strings.Fields(scanner.Text())
 		wordCount += len(words)
 	}
-	fmt.Println(lineCount, wordCount, bytesCount)
+	if lineCount == 0 {
+		return 0, 0, 0
+	}
 	return lineCount, wordCount, bytesCount
 }
-
-// func main () {
-// 	reader:= bufio.NewReader(os.Stdin)
-// 	input, _ := reader.ReadString('\n')
-// 	//Trimming the new line character from the input
-// 	input = strings.TrimSpace(input)
-// 	wc(input)
-// }

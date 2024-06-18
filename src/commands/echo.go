@@ -15,13 +15,3 @@ func Echo(args []string) {
 	fmt.Print(" ")
 		}
 	}
-
-// func main() {
-// 	reader := bufio.NewReader(os.Stdin)
-// 	input, _ := reader.ReadString('\n')
-// 	//Trimming the new line character from the input
-// 	input = strings.TrimSpace(input)
-// 	// Spliting the input by spaces and appending to an array of strings (slice)
-// 	arrayOfStrings := strings.Fields(input)
-// 	echo(arrayOfStrings)
-// }

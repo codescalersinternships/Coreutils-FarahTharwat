@@ -7,7 +7,7 @@ import (
 func Tree (rootpath string){
 	err:=filepath.Walk(rootpath, FindPath)
 	if err != nil {
-		fmt.Println("error walking the path %v: %v\n", rootpath, err)
+		fmt.Println("error in the path %v: %v\n", rootpath, err)
 		return
 	}
 }

@@ -18,27 +18,49 @@ func main() {
 	command_type := arrayOfStrings[0]
 	switch command_type {
 	case "head", "tail":
+		filepath := strings.Trim(arrayOfStrings[2], "\"") // Removing surrounding quotes
 		num, err := strconv.Atoi(arrayOfStrings[1])
-		if err != nil {
-			fmt.Println("Error converting input to integer:", err)
-			return
+			if err != nil {
+				fmt.Println("Error converting input to integer:", err)
+				return
+			}
+		if command_type == "tail" {
+			commands.Tail(num,filepath)
+		}else {
+			commands.Head(num,filepath)
 		}
-		commands.Head(num, arrayOfStrings[2])
-		break
 	case "cat":
 		if arrayOfStrings[1] == "-n" {
-			commands.Cat(true, arrayOfStrings[2])
+			filepath := strings.Trim(arrayOfStrings[2], "\"") // Removing surrounding quotes
+			commands.Cat(true,filepath)
 		} else {
-			commands.Cat(false, arrayOfStrings[1])
+			filepath := strings.Trim(arrayOfStrings[1], "\"") // Removing surrounding quotes
+			commands.Cat(false,filepath)
 		}
 	case "echo":
 		commands.Echo(arrayOfStrings[1:])
-		break
 	case "wc":
-		commands.Wc(arrayOfStrings[1])
-		break
+		filepath := strings.Trim(arrayOfStrings[1], "\"") // Removing surrounding quotes
+		lines,words,bytes := commands.Wc(filepath)
+		if lines == 0 {
+			fmt.Println("Error: Incorrect file path or file does not exist")
+		}else{
+			fmt.Println(lines,words,bytes)
+		}
 	case "tree":
-		commands.Tree(arrayOfStrings[1])
+		filepath := strings.Trim(arrayOfStrings[1], "\"") // Removing surrounding quotes
+		commands.Tree(filepath)
+	case "true":
+		commands.True()
+	case "false":
+		commands.False()
+	case "yes" :
+		if (len(arrayOfStrings) > 1){
+		word := strings.Trim(arrayOfStrings[1], "\"") // Removing surrounding quotes
+		commands.Yes(word)
+		}else{
+			commands.Yes(" ")
+		}
 	}
 
 }
