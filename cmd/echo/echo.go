@@ -6,10 +6,7 @@ import (
 )
 func main() {
 	err := internal.Echo()
-	if err == nil {
-		os.Exit(0)
-	}else {
+	if err != nil {
 		os.Exit(1)
-		}
-}
+}}
 

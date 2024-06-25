@@ -7,9 +7,7 @@ import (
 
 func main() {
 	err := internal.Cat()
-	if err == nil {
-		os.Exit(0)
-	}else {
+	if err != nil {
 		os.Exit(1)
 	}
 }

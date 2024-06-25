@@ -5,8 +5,6 @@ import (
 )
 func main() {
 	_,_,_,err := internal.Wc()
-	if err == nil {
-		os.Exit(0)
-	}else {os.Exit(1)
-		}
+	if err != nil {
+		os.Exit(1)}
 }
