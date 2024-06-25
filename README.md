@@ -8,9 +8,9 @@ This repository contains implementations of several Unix-based commands in Go. E
 The `echo` command in Go prints its arguments to standard output.
 To be able to run the echo command for environment variables you need to consider the following :
     If you are running from : <br>
-  -Powershell then write : ./echo $env:ENVNAME ex: ./echo $env:Path <br>
-  -Linux then write : ./echo $ENVNAME ex: ./echo $PATH <br>
-  -CMD then write : ./echo %ENVNAME%  ex : ./echo %Path% <br>
+  - Powershell then write : ./echo $env:ENVNAME ex: ./echo $env:Path <br>
+  - Linux then write : ./echo $ENVNAME ex: ./echo $PATH <br>
+  - CMD then write : ./echo %ENVNAME%  ex : ./echo %Path% <br>
 
 ### 2. env
 
