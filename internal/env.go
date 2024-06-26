@@ -4,7 +4,7 @@ import (
 	"os"
 	"strings"
 )
-func Env() (err error) {
+func Env(){
 	for _, e := range os.Environ() {
 		pair := strings.Split(e, "=")
 		values := strings.Split(pair[1], ";")
@@ -12,5 +12,4 @@ func Env() (err error) {
 			fmt.Println(pair[0], "=", value)
 		}
 	}
-	return nil
 }

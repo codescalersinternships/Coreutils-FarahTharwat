@@ -6,6 +6,10 @@ This repository contains implementations of several Unix-based commands in Go. E
 ### 1. echo
 
 The `echo` command in Go prints its arguments to standard output.
+To be able to run the echo command for environment variables you need to consider the following if you are running from : <br>
+  - Powershell then write : ./echo $env:ENVNAME ex: ./echo $env:Path <br>
+  - Linux then write : ./echo $ENVNAME ex: ./echo $PATH <br>
+  - CMD then write : ./echo %ENVNAME%  ex : ./echo %Path% <br>
 
 ### 2. env
 
@@ -46,5 +50,5 @@ The `false` command in Go does nothing except return a non-successful exit statu
 
 The `tree` command in Go recursively lists contents of directories in a tree-like format.
 
-## Notes
+## Note
 - The implementations are designed to mirror standard Unix behavior without extensive flag support, except where specified above.
