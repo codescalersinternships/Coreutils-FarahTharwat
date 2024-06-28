@@ -1,5 +1,5 @@
 package internal
-import ("os")		
+import "os"		
 
 func True(){
 	os.Exit(0)

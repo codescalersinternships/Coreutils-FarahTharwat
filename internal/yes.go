@@ -6,9 +6,9 @@ import (
 	"syscall"
 )
 func Yes () (err error){
-	word:= " "
+	word:= "y"
 	if len(os.Args) > 2 {
-		word = os.Args[2]
+		word = os.Args[1]
 	}
 	// Creating a channel to receive OS signals
 	sig := make(chan os.Signal, 1)
@@ -18,11 +18,7 @@ func Yes () (err error){
 		if len(sig) != 0 {
 			break
 		}
-		if word == " "{
-			fmt.Println("y")
-		}else {
-			fmt.Println(word)
-		}	
+		fmt.Println(word)
 	}
 	return nil
 }

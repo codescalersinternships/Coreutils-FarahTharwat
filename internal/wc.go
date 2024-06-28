@@ -21,8 +21,7 @@ func Wc()(lineCount,wordCount,bytesCount int, err error) {
 	for _,line:= range lines {
 		lineCount++
 		bytesCount += len(line)
-		words := strings.Fields(line)
-		wordCount += len(words)
+		wordCount += len(strings.Fields(line))
 	}
 	if lineCount == 0 {
 		fmt.Print(0,0,0)

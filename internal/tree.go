@@ -11,11 +11,6 @@ func Tree () (err error){
 	if len(os.Args) > 1 {
 		rootpath = os.Args[1]
 	}
-	rootpath,err = CheckFilePath(rootpath)
-	if err != nil {
-		return err
-	}
-
 	err = filepath.Walk(rootpath, FindPath(rootpath))
 	if err != nil {
 		fmt.Printf("error in the path %v: %v\n", rootpath, err)

@@ -1,10 +1,11 @@
 package main
 import (
 	"Linux_Commands/internal"
-	"os"
+	"log"
 )
 func main() {
 	err := internal.Head()
 	if err != nil {
-		os.Exit(1)}
+		log.Fatal(err)
+	}
 }

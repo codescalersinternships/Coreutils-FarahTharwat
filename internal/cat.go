@@ -6,11 +6,10 @@ import (
 )
 
 func Cat() (err error) {
-	args,err := ArgsParsing(0)
+	args,err := argsParsing(0)
 	if err != nil {
 		return err	
 	}
-	fmt.Printf("args: %v\n", args)
 	flag,_:= args[0].(bool)
     path,_:= args[1].(string)
 	content , err := ScanFile(path)

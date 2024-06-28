@@ -3,13 +3,10 @@ package internal
 import (
 	"fmt"
 	"os"
-	//"strings"
+	"strings"
 )
 
 func Echo() (err error) {
-	for _, arg := range os.Args[1:] {
-		fmt.Print(arg)
-		fmt.Print(" ")
-	}
+	fmt.Println(strings.Join(os.Args[1:]," "))
 	return nil
 }

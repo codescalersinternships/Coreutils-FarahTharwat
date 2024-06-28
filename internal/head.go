@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 func Head() (err error){
-	args,err := ArgsParsing(1)
+	args,err := argsParsing(1)
 	if err != nil {
 		return err	
 	}

@@ -6,7 +6,7 @@ import (
 )
 
 func Tail() (err error) {
-	args,err := ArgsParsing(1)
+	args,err := argsParsing(1)
 	if err != nil {
 		return err	
 	}
@@ -21,13 +21,12 @@ func Tail() (err error) {
 	if err!=nil{
 		return err
 	}
-	counter:= 0
-	for _,line:= range lines{
-		if ((LinesCount-counter) > num) || counter > len(lines){
+	for counter,line:= range lines{
+		if ((LinesCount-counter) > num) {
 			break 
 		}
 		fmt.Println(line)
-		counter++
 	}
 	return nil
+	
 }
