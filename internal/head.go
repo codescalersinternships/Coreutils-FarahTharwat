@@ -2,14 +2,16 @@ package internal
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 func Head(numOfLines int , path string) (err error){
-	content , err := scanFile(path)
+	contentBytes, err := os.ReadFile(path)
 	if err != nil {
 		return err
 	}
-	lines := strings.Split(content, "\n")
+	newContent:= strings.ReplaceAll(string(contentBytes),"\r\n","\n")
+	lines := strings.Split(newContent, "\n")
 	for counter,line:= range lines {
 		if counter >= numOfLines {
 			break
