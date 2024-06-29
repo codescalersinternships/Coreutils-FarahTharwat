@@ -1,20 +1,15 @@
 package internal
 
 import (
-	"flag"
 	"fmt"
 	"strings"
 )
-func Head() (err error){
-	var numOfLines int
-	flag.IntVar(&numOfLines,"-n",10,"specify number of lines to be printed")
-	flag.Parse()
-    path:= flag.Args()[0]
-	content , err := ScanFile(path)
-	lines := strings.Split(content, "\n")
+func Head(numOfLines int , path string) (err error){
+	content , err := scanFile(path)
 	if err != nil {
 		return err
 	}
+	lines := strings.Split(content, "\n")
 	for counter,line:= range lines {
 		if counter >= numOfLines {
 			break

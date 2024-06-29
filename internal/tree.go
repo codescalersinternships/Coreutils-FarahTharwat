@@ -11,7 +11,7 @@ func Tree () (err error){
 	if len(os.Args) > 1 {
 		rootpath = os.Args[1]
 	}
-	err = filepath.Walk(rootpath, FindPath(rootpath))
+	err = filepath.Walk(rootpath, findPath(rootpath))
 	if err != nil {
 		fmt.Printf("error in the path %v: %v\n", rootpath, err)
 		return err
@@ -19,7 +19,7 @@ func Tree () (err error){
 	return nil
 }
 
-func FindPath(rootpath string) filepath.WalkFunc {
+func findPath(rootpath string) filepath.WalkFunc {
 	// using closure to keep track if it the root . or only the first subdirectory as filepath.Rel gives same depth for both
 	isroot := true
 	return func(path string, info os.FileInfo, err error) error {

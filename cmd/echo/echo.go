@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Linux_Commands/internal"
+	"github.com/codescalersinternships/Coreutils-FarahTharwat/internal"
 	"log"
 )
 func main() {

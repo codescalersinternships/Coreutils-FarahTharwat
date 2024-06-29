@@ -1,17 +1,12 @@
 package internal
 
 import (
-	"flag"
 	"fmt"
 	"strings"
 )
 
-func Tail() (err error) {
-	var numOfLines int
-	flag.IntVar(&numOfLines,"-n",10,"specify number of lines to be printed")
-	flag.Parse()
-    path:= flag.Args()[0]
-	content , err := ScanFile(path)
+func Tail(numOfLines int , path string) (err error) {
+	content , err := scanFile(path)
 	if err != nil {
 		return err
 	}

@@ -1,6 +1,6 @@
 package main
 import (
-	"Linux_Commands/internal"
+	"github.com/codescalersinternships/Coreutils-FarahTharwat/internal"
 )
 func main() {
 	internal.True()

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/signal"
+	"strings"
 	"syscall"
 	"time"
 )
@@ -11,7 +12,7 @@ import (
 func Yes() (err error) {
 	word := "y"
 	if len(os.Args) >= 2 {
-		word = os.Args[1]
+		word = strings.Join(os.Args[1:], " ")
 	}
 	// Creating a channel to receive OS signals
 	sig := make(chan os.Signal, 1)

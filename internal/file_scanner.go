@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func ScanFile(filepath string) (content string , err error){
+func scanFile(filepath string) (content string , err error){
 	file, err := os.Open(filepath)
 	if err != nil {
 		fmt.Fprintln(os.Stderr,"Incorrect file path or file does not exist")

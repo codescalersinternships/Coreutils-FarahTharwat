@@ -1,23 +1,18 @@
 package internal
 
 import (
-	"flag"
 	"fmt"
 	"strings"
 )
 
-func Cat() (err error) {
-	var linesNum bool
-	flag.BoolVar(&linesNum,"-n",false, "specify if the number of lines to be printed along the text")
-	flag.Parse()
-    path:= flag.Args()[0]
-	content , err := ScanFile(path)
+func Cat(showLineNums bool,path string) (err error) {
+	content , err := scanFile(path)
 	lines := strings.Split(content, "\n")
 	if err != nil {
 		return err
 	}
 	for counter,line := range lines {
-		if linesNum {
+		if showLineNums {
 			fmt.Println(counter, line)
 			continue
 		}

@@ -9,8 +9,7 @@ import (
 
 func Wc()(lineCount,wordCount,bytesCount int, err error) {
 	path := os.Args[1]
-	content , err := ScanFile(path)
-
+	content , err := scanFile(path)
 	lines := strings.Split(content, "\n")
 	wordCount = 0
 	bytesCount = 0
