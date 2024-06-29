@@ -9,14 +9,14 @@ import (
 
 func Wc()(lineCount,wordCount,bytesCount int, err error) {
 	path := os.Args[1]
-	content , err := scanFile(path)
-	lines := strings.Split(content, "\n")
+	contentBytes, err := os.ReadFile(path)
+	if err != nil {
+		return 0,0,0,err
+	}
+	newContent:= strings.ReplaceAll(string(contentBytes),"\r\n","\n")
+	lines := strings.Split(newContent, "\n")
 	wordCount = 0
 	bytesCount = 0
-	if err != nil {
-		fmt.Print(0,0,0)
-		return 0, 0, 0 , err
-	}
 	for _,line:= range lines {
 		bytesCount += len(line)+1
 		wordCount += len(strings.Fields(line))
