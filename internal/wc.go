@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"path/filepath"
 )
 
 func Wc()(lineCount,wordCount,bytesCount int, err error) {
-	filepath := os.Args[1]
-	content , err := ScanFile(filepath)
+	path := os.Args[1]
+	content , err := ScanFile(path)
 
 	lines := strings.Split(content, "\n")
-	lineCount = 0
 	wordCount = 0
 	bytesCount = 0
 	if err != nil {
@@ -19,14 +19,13 @@ func Wc()(lineCount,wordCount,bytesCount int, err error) {
 		return 0, 0, 0 , err
 	}
 	for _,line:= range lines {
-		lineCount++
-		bytesCount += len(line)
+		bytesCount += len(line)+1
 		wordCount += len(strings.Fields(line))
 	}
-	if lineCount == 0 {
+	if len(lines)-1 == 0 {
 		fmt.Print(0,0,0)
 		return 0, 0, 0,nil
 	}
-	fmt.Print(lineCount,wordCount,bytesCount+1)
-	return lineCount, wordCount, bytesCount+1, nil
+	fmt.Println(len(lines)-1,wordCount,bytesCount-1,filepath.Base(path))
+	return len(lines)-1, wordCount, bytesCount-1, nil
 }

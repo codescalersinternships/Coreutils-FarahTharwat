@@ -1,29 +1,25 @@
 package internal
 
 import (
+	"flag"
 	"fmt"
 	"strings"
 )
 func Head() (err error){
-	args,err := argsParsing(1)
-	if err != nil {
-		return err	
-	}
-    path,_:= args[0].(string)
-	num:= args[1].(int)
+	var numOfLines int
+	flag.IntVar(&numOfLines,"-n",10,"specify number of lines to be printed")
+	flag.Parse()
+    path:= flag.Args()[0]
 	content , err := ScanFile(path)
 	lines := strings.Split(content, "\n")
 	if err != nil {
 		return err
 	}
-	counter := 0
-	for _,line:= range lines {
-		if counter >= num ||  counter > len(lines) {
+	for counter,line:= range lines {
+		if counter >= numOfLines {
 			break
-		}else{
-			fmt.Println(line)
 		}
-		counter++
+		fmt.Println(line)
 	}
 	return nil
 }

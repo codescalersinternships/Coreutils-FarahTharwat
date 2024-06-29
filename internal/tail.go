@@ -1,32 +1,28 @@
 package internal
 
 import (
+	"flag"
 	"fmt"
 	"strings"
 )
 
 func Tail() (err error) {
-	args,err := argsParsing(1)
-	if err != nil {
-		return err	
-	}
-    path,_:= args[0].(string)
-	num:= args[1].(int)
+	var numOfLines int
+	flag.IntVar(&numOfLines,"-n",10,"specify number of lines to be printed")
+	flag.Parse()
+    path:= flag.Args()[0]
 	content , err := ScanFile(path)
-	lines := strings.Split(content, "\n")
 	if err != nil {
 		return err
 	}
-	LinesCount,_,_,err := Wc()
-	if err!=nil{
-		return err
-	}
-	for counter,line:= range lines{
-		if ((LinesCount-counter) > num) {
+	lines := strings.Split(content, "\n")
+	for i:=len(lines)-1 ; i>(len(lines)-numOfLines);i--{ 
+		// in case the numoflines entered in console is larger than the actual number of lines in the file
+		if (i==0) {
 			break 
 		}
-		fmt.Println(line)
+		fmt.Println(lines[i])
 	}
+
 	return nil
-	
 }

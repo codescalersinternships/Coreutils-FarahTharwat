@@ -1,1 +1,10 @@
-*.exe
+echo
+yes
+cat
+env
+false
+tail
+head
+tree
+true
+wc
